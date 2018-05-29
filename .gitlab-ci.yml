@@ -1,0 +1,13 @@
+image: java:8
+
+deploy:
+  stage: deploy
+  image: ruby:2.3
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby ruby-dev rubygems-integration
+    - gem install dpl
+    - dpl --provider=heroku --app=group-3-tempeturs-backend --api-key=$API_KEY
+  
+  #only:
+    #- master
